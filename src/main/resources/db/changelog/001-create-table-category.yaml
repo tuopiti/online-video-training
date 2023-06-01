@@ -1,0 +1,24 @@
+databaseChangeLog:
+- changeSet:
+    id: 001-create-table-category
+    author: tuopiti36@gmail.com
+    changes:
+    - createTable:
+        tableName: categories
+        columns:
+        - column:
+            constraints:
+              primaryKey: true
+            name: id
+            type: BIGINT       
+        - column:
+            name: name
+            type: VARCHAR(255)
+   
+  
+            
+   
+
+   
+   
+   
