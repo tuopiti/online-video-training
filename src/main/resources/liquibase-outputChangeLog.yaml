@@ -1,10 +1,9 @@
 databaseChangeLog:
 - changeSet:
-    id: 001-create-table-category
-    author: tuopiti36@gmail.com
+    id: 1686219229314-1
+    author: admin (generated)
     changes:
     - createTable:
-        tableName: categories
         columns:
         - column:
             autoIncrement: true
@@ -17,5 +16,5 @@ databaseChangeLog:
         - column:
             name: name
             type: VARCHAR(255)
-        
+        tableName: categories
 
