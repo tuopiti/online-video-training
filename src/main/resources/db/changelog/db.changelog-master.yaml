@@ -5,4 +5,6 @@ databaseChangeLog:
       file: db/changelog/002-add-column-table-category.yaml
   - include:
       file: db/changelog/003-create-table-courses.yaml
+  - include:
+      file: db/changelog/004-create-table-videos.yaml
   
