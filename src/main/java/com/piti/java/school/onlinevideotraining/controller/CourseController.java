@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,11 +24,12 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/courses")
+@RequestMapping("api/v1/courses")
 public class CourseController {
 	private final CourseService courseService;
 	private final CourseMapper courseMapper;
 	
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN','ROLE_AUTHOR')")
 	@PostMapping
 	public ResponseEntity<?> create(@RequestBody CourseDTO dto){		
 		Course course = courseMapper.toCourse(dto);
@@ -37,6 +39,7 @@ public class CourseController {
 		
 	}
 	
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN','ROLE_AUTHOR')")
 	@GetMapping("{id}")
 	public ResponseEntity<?> getById(@PathVariable("id") Long id){
 		Course course = courseService.getById(id);
@@ -44,12 +47,14 @@ public class CourseController {
 		
 	}
 	
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN','ROLE_AUTHOR')")
 	@PutMapping("{id}")
 	public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody CourseDTO dto){
 		Course course = courseService.update(id, dto);		
 		return ResponseEntity.ok(CourseMapper.INSTANCE.toDTO(course));
 	}
 	
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN','ROLE_AUTHOR')")
 	@DeleteMapping("{id}")
 	public ResponseEntity<?> deleteById(@PathVariable("id") Long id){
 		courseService.delete(id);

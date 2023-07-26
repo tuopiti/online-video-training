@@ -1,0 +1,13 @@
+id,name
+1,category:write
+2,category:read
+3,category:update
+4,category:delete
+5,course:write
+6,course:read
+7,course:update
+8,course:delete
+9,video:write
+10,video:read
+11,video:update
+12,video:delete

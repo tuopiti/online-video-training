@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,12 +25,13 @@ import com.piti.java.school.onlinevideotraining.service.VideoService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/videos")
+@RequestMapping("api/v1/videos")
 @RequiredArgsConstructor
 public class VideoController {
 	private final VideoService videoService;
 	private final VideoMapper videoMapper;
 	
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN','ROLE_AUTHOR')")
 	@PostMapping
 	public ResponseEntity<?> create(@RequestBody VideoDTO dto){
 		Video video = videoMapper.toVideo(dto);
@@ -37,18 +39,21 @@ public class VideoController {
 		return ResponseEntity.ok(VideoMapper.INSTANCE.toDTO(video));		
 	}
 	
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN','ROLE_AUTHOR')")
 	@GetMapping("{id}")
 	public ResponseEntity<?> getById(@PathVariable("id") Long id){
 		Video video = videoService.getById(id);
 		return ResponseEntity.ok(VideoMapper.INSTANCE.toDTO(video));
 	}
 	
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN','ROLE_AUTHOR')")
 	@PutMapping("{id}")
 	public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody VideoDTO dto){
 		Video video = videoService.update(id, dto);		
 		return ResponseEntity.ok(VideoMapper.INSTANCE.toDTO(video));
 	}
 	
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN','ROLE_AUTHOR')")
 	@DeleteMapping("{id}")
 	public ResponseEntity<?> deleteById(@PathVariable("id") Long id){
 		videoService.delete(id);
