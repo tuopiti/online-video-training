@@ -1,0 +1,26 @@
+databaseChangeLog:
+- changeSet:
+    id: 003-create-table-courses
+    author: tuopiti36@gmail.com
+    changes:
+    - createTable:
+        tableName: courses
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: courses_pkey
+            name: id
+            type: BIGINT
+        - column:
+            name: name
+            type: VARCHAR(255)
+        - column:
+            name: category_id
+            type: BIGINT
+            constraints:
+              foreignKeyName: fk_courses_categories
+              references: categories(id)
+        

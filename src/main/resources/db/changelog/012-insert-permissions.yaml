@@ -1,0 +1,15 @@
+databaseChangeLog:
+- changeSet:
+    id: 012-insert-permission
+    author: tuopiti36@gmail.com
+    changes:
+    - loadData:
+        file: db/data/012/permissions.csv
+        tableName: permissions
+        columns:
+        - column:           
+            name: id
+            type: NUMERIC
+        - column:
+            name: name
+            type: VARCHAR(255)

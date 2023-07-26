@@ -1,0 +1,27 @@
+databaseChangeLog:
+- changeSet:
+    id: 008-create-table-roles-permissions
+    author: tuopiti36@gmail.com
+    changes:
+    - createTable:
+        tableName: roles_permissions
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: roles_permissions_pkey
+              foreignKeyName: fk_roles_permissions_roles
+              references: roles(id)
+            name: role_id
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: roles_permissions_pkey
+              foreignKeyName: fk_roles_permissions_permissions
+              references: permissions(id)
+            name: permissions_id
+            type: BIGINT
+        

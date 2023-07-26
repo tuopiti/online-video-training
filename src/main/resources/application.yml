@@ -1,19 +1,42 @@
+application:
+  security:
+    jwt:
+      secretKey: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+
 spring:
- datasource:
-  url: jdbc:postgresql://localhost:5432/onlinevideotraining
-  username: videotraining_piti
-  password: piti123
- jpa: 
-  hibernate:
-   ddl-auto: update
-  properties:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/onlinevideotraining
+    username: videotraining_piti
+    password: piti123
+  jpa: 
     hibernate:
-     dialect = org.hibernate.dialect.PostgreSQLDialect
- jackson:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect = org.hibernate.dialect.PostgreSQLDialect
+  jackson:
     serialization:
       fail-on-empty-beans: false
- liquibase:
-        change-log: classpath:db/changelog/db.changelog-master.yaml
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: tuopiti36@gmail.com
+    password: sqmsznoymovxtyvv
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+  api-docs:
+    path: /bus/v3/api-docs
+
  
 
  

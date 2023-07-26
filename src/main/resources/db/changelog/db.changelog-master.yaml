@@ -3,4 +3,27 @@ databaseChangeLog:
       file: db/changelog/001-create-table-category.yaml
   - include:
       file: db/changelog/002-add-column-table-category.yaml
+  - include:
+      file: db/changelog/003-create-table-courses.yaml
+  - include:
+      file: db/changelog/004-create-table-videos.yaml
+  - include:
+      file: db/changelog/005-create-table-users.yaml
+  - include:
+      file: db/changelog/006-create-table-roles.yaml
+  - include:
+      file: db/changelog/007-create-table-permissions.yaml
+  - include:
+      file: db/changelog/008-create-table-users-roles.yaml
+  - include:
+      file: db/changelog/009-create-table-roles-permissions.yaml
+  - include:
+      file: db/changelog/010-create-table-confirmation-token-emails.yaml
+  - include:
+      file: db/changelog/011-insert-roles.yaml
+  - include:
+      file: db/changelog/012-insert-permissions.yaml
+  - include:
+      file: db/changelog/013-insert-role-permissions.yaml
+      
   
